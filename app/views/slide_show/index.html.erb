@@ -1,6 +1,12 @@
 <script>
-  img = document.createElement('img')
-  img.src = "https://live.staticflickr.com/<%= @photos[0]['server'] %>/<%= @photos[0]['id'] %>_<%= @photos[0]['secret'] %>_b.jpg"
-  img.style = "flex: 1;"
-  document.body.appendChild(img)
+  displayImage = () => {
+    img = document.createElement('img');
+    img.src = "https://live.staticflickr.com/<%= @photos[0]['server'] %>/<%= @photos[0]['id'] %>_<%= @photos[0]['secret'] %>_b.jpg";
+    img.style = "flex: 1;";
+    document.body.appendChild(img);
+  }
+
+  const init = (() => {
+    displayImage()
+  })()
 </script>
