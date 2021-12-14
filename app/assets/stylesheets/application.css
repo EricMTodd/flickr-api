@@ -2,8 +2,15 @@
   font-family: 'fira sans';
 }
 
-body {
-  margin: 0 auto;
-  height: 100vh;
+html {
   display: flex;
+  height: 100vh;
+}
+
+body {
+  flex: 1;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
