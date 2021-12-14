@@ -1,0 +1,7 @@
+<% @photos.each do |photo| %>
+  <%= image_tag "https://live.staticflickr.com/#{photo['server']}/#{photo['id']}_#{photo['secret']}.jpg" %>
+<% end %>
+
+<% if @key %>
+  <%= @key %>
+<% end %>
