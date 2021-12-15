@@ -1,18 +1,8 @@
-
-
+<% @urls.each do |url| %>
+  <%= url %>
+<% end %>
 
 <script>
-  // let serverId = <%= @photos[@index]['server'] %>
-  // let id = <%= @photos[@index]['id'] %>
-  // let secret = <%= @photos[@index]['secret'] %>
-
-  let requestSample = 'https://live.staticflickr.com/{server-id}/{id}_{secret}_b.jpg'
-
-  displayImage = () => {
-    document.body.style = `background-image: url("https://live.staticflickr.com/<%= @photos[@index]['server'] %>/<%= @photos[@index]['id'] %>_<%= @photos[@index]['secret'] %>_b.jpg;");`;
-  }
-
-  const init = (() => {
-    displayImage()
-  })()
+  let urls = <%= raw @urls %>
+  console.log(urls)
 </script>
