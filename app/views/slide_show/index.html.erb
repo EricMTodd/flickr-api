@@ -1,8 +1,32 @@
-<% @urls.each do |url| %>
-  <%= url %>
-<% end %>
-
 <script>
-  let urls = <%= raw @urls %>
-  console.log(urls)
+  const urls = <%= raw @urls %>
+  let div = document.createElement('div')
+  document.body.appendChild(div)
+  div.style = "color: white; font-size: 144px; margin-right: 25px; position: fixed; bottom: 0; right: 0;"
+
+
+  const slideshow = (i) => {
+    setTimeout(() => {
+      document.body.style = `background-image: url(${urls[i]})`;
+      let today = new Date()
+      hour = today.getHours()
+      minute = today.getMinutes()
+      if (minute < 10) {
+        minute = "0" + minute
+      }
+      if (hour > 12) {
+        hour = hour - 12
+        div.innerText = `${hour}:${minute} PM`
+      } else {
+        div.innerText = `${hour}:${minute} AM`
+      }
+    }, 15000 * i);
+  }
+
+  let i = 0
+  while (i < urls.length) {
+    slideshow(i);
+    i++;
+  }
+
 </script>
