@@ -1,5 +1,11 @@
 <script>
   const urls = <%= raw @urls %>
+  const weather = "<%= raw @weather %>"
+  let temperature = "<%= raw @temperature %>"
+  temperature = (parseInt(temperature) - 273.15) * 9 / 5 + 32
+  temperature = Math.round(temperature)
+  console.log(weather)
+  console.log(temperature)
   let div = document.createElement('div')
   document.body.appendChild(div)
   div.style = "color: white; font-size: 144px; margin-right: 25px; position: fixed; bottom: 0; right: 0;"
