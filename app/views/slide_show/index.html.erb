@@ -1,9 +1,9 @@
-<div class="city" style="font-size: 72px; position: absolute; right: 0; bottom: 0; margin-bottom: 216px; margin-right: 25px;">
+<div class="city" style="font-size: 72px; position: absolute; right: 0; bottom: 0; margin-bottom: 150px; margin-right: 25px;">
   <%= @city %>
 </div>
-<div class="weather-container" style="font-size: 72px; display: flex; position: absolute; right: 0; bottom: 0; margin-bottom: 132px; margin-right: 25px;">
+<div class="weather-container" style="font-size: 64px; display: flex; position: absolute; right: 0; bottom: 0; margin-bottom: 3px; margin-right: 600px;">
   <%= image_tag("http://openweathermap.org/img/wn/#{@weather['icon']}@2x.png") %>
-  <%= ((@temperature['temp'] - 273.15) * 9 / 5 + 32).round %>° F
+  <%= ((@temperature['temp'] - 273.15) * 9 / 5 + 32).round %>°F
 </div>
 <div class="clock" style="font-size: 144px; position: absolute; bottom: 0; right: 0; margin-right: 20px;"></div>
 
