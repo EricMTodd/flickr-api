@@ -1,19 +1,20 @@
-<script>
-  const urls = <%= raw @urls %>
-  const weather = "<%= raw @weather %>"
-  let temperature = "<%= raw @temperature %>"
-  temperature = (parseInt(temperature) - 273.15) * 9 / 5 + 32
-  temperature = Math.round(temperature)
-  console.log(weather)
-  console.log(temperature)
-  let div = document.createElement('div')
-  document.body.appendChild(div)
-  div.style = "color: white; font-size: 144px; margin-right: 25px; position: fixed; bottom: 0; right: 0;"
+<div class="city" style="font-size: 72px; position: absolute; right: 0; bottom: 0; margin-bottom: 216px; margin-right: 25px;">
+  <%= @city %>
+</div>
+<div class="weather-container" style="font-size: 72px; display: flex; position: absolute; right: 0; bottom: 0; margin-bottom: 132px; margin-right: 25px;">
+  <%= image_tag("http://openweathermap.org/img/wn/#{@weather['icon']}@2x.png") %>
+  <%= ((@temperature['temp'] - 273.15) * 9 / 5 + 32).round %>° F
+</div>
+<div class="clock" style="font-size: 144px; position: absolute; bottom: 0; right: 0; margin-right: 20px;"></div>
 
+<script>
+
+  const urls = <%= raw @urls %>
+  let div = document.querySelector('.clock')
 
   const slideshow = (i) => {
     setTimeout(() => {
-      document.body.style = `background-image: url(${urls[i]})`;
+      document.body.style = `background-image: url(${urls[Math.floor(Math.random() * urls.length)]})`;
       let today = new Date()
       hour = today.getHours()
       minute = today.getMinutes()
@@ -26,7 +27,7 @@
       } else {
         div.innerText = `${hour}:${minute} AM`
       }
-    }, 15000 * i);
+    }, 30000 * i);
   }
 
   let i = 0
@@ -35,4 +36,9 @@
     i++;
   }
 
+  const refetch = (() => {
+    setTimeout(() => {
+      location.reload()
+    }, 3600000)
+  })()
 </script>

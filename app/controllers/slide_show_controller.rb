@@ -2,12 +2,14 @@ require 'json'
 require 'pry'
 
 class SlideShowController < ApplicationController
+  @@city = "Denver"
+
   def index
-    @urls = compile_image_urls
     compiled_weather_data = compile_weather_data
-    @weather = compiled_weather_data[:weather_data]['main']
-    @icon = compiled_weather_data[:weather_data]['icon']
-    @temperature = compiled_weather_data[:temperature_data]['temp']
+    @city = @@city
+    @temperature = compiled_weather_data[:temperature_data]
+    @urls = compile_image_urls
+    @weather = compiled_weather_data[:weather_data]
   end
   
   private
@@ -29,7 +31,7 @@ class SlideShowController < ApplicationController
   end
 
   def make_weather_request
-    response = RestClient.get("api.openweathermap.org/data/2.5/weather?q=Denver&appid=8d9b598296f463cb05d7baea7c741c65", accept: :json)
+    response = RestClient.get("api.openweathermap.org/data/2.5/weather?q=#{@@city}&appid=8d9b598296f463cb05d7baea7c741c65", accept: :json)
   end
 
   def compile_weather_data

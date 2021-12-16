@@ -25,10 +25,12 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
+# Installed gems
 gem 'flickr', '~> 2.0', '>= 2.0.2'
 gem 'pry'
 gem 'figaro'
 gem 'rest-client'
+gem 'geocoder'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
