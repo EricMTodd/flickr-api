@@ -15,7 +15,8 @@ class SlideShowController < ApplicationController
   private
   
   def make_photos_request
-    response = RestClient.get("https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=d33654f7f4ba030ab30cf81840afd79d&user_id=194608125%40N04&format=json&nojsoncallback=1&api_sig=5b68f34922efa39783bb153a4e60f738", accept: :json)
+    url = "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=39ebf8206b5f188179bf4176fadf9407&user_id=194608125%40N04&format=json&nojsoncallback=1"
+    response = RestClient.get(url.to_s, accept: :json)
     json = JSON.parse(response)
     photos = json["photos"]["photo"]
   end
